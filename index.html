@@ -1,0 +1,70 @@
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.0/css/jasny-bootstrap.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.0/js/jasny-bootstrap.min.js"></script>
+<title>cmbl2csv</title>
+
+<style>
+body {
+	text-align:center;
+}
+.fileinput{
+	text-align:left;
+}
+.container {
+	margin-top:20px;
+}
+footer {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width: 100%;
+	background:rgba(0,0,0,0.2);
+	padding:10px;
+	z-index:100;
+}
+.well i {
+	font-size:100px;
+	color: #72a4d4;
+}
+
+button i {
+	font-size: 12px;
+}
+
+footer i {
+	color:#948686;
+}
+
+</style>
+
+<div  class="container">
+	<div style="text-align:center" class="lead well">
+		<i class="glyphicon glyphicon-cloud-upload"></i>
+		<h1>.cmbl 2 .csv</h1>
+	</div>
+	<form method="POST" action="/convert" enctype="multipart/form-data">
+		<div id="file" class="fileinput fileinput-new" data-provides="fileinput">
+			<div class="input-group">
+				<div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+				<span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="file"></span>
+				<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+			</div>
+			<span class="help-block">Choose a .cmbl or .ga3 file.</span>
+		</div>
+		<button class="btn btn-lg btn-primary" disabled><i class="glyphicon glyphicon-cog"></i> convert</button>
+	</form>
+</div>
+
+<script>
+$(function(){
+	$('#file').on('change.bs.fileinput', function(){
+		$('button').attr('disabled', false);
+	});
+	$('#file').on('clear.bs.fileinput', function(){
+		$('button').attr('disabled', true);
+	})
+});
+</script>
+
+<footer>made with <i class="glyphicon glyphicon-heart"></i> by <a href="https://github.com/konsumer">David Konsumer</a> </footer>
